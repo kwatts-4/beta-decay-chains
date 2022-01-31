@@ -12,7 +12,9 @@ tbd, likely making sure you've installed python and pandas
 
 ## Input
 
-The program launches with a tkinter interface. The user is prompted to enter a nuclide that undergoes ß- decay as well as a path for the csv. The csv is written to a file called `Decay_Chain_[nuclide].csv` in the user-specified directory. If no directory is specified, the default is `~/Downloads/`.
+The program launches with a tkinter interface. The user is prompted to enter a nuclide that undergoes ß- decay as well as a path for the csv. The csv is written to a file called `Decay_Chain_[nuclide].csv` in the user-specified directory. If no directory is specified, the default is `~/Downloads/`. 
+
+There will also be a checkbox called print. If selected, the decay chains will be printed to the console in the form of a Python list.
 
 Sample Inputs:
 ```python
@@ -25,30 +27,43 @@ Sample Inputs:
 ```
 
 ## Output
-The csv file structure is very basic. The entered nuclide is listed in the first column of each row, followed by its probability of either emitting zero, one, or two neutrons. This is followed by the next nuclide in the chain and the same type of probability. The chain terminates once a stable nuclide is reached; the last nuclide in each chain is stable.
+The csv file structure is very basic. The entered nuclide is listed in the first column of each row, followed by its probability of either emitting zero, one, or two neutrons. This is followed by the next nuclide in the chain and the same type of probability. The chain terminates once a stable nuclide is reached. Since the last nuclide in each chain is stable, it is not followed by a probability value. Since some chains will be shorter than others, some rows will have some blank elements. 
 
-#### Negative Numbers
-There are some probability values that are listed as negative. They are to be interpreted as follows.
+#### Special Values
+There are some probability values that are to be treated as flags, and have special meanings. In both cases, the nuclide's P1n or P2n value is unknown, but the specified number of neutron emissions is known to occur. 
 | Value       | Meaning     |
 | :---------- | :---------- |
-| -1.0/-1     | Probability value is unknown, but the specified number of neutron emissions is known to occur.       |
-| -2.0/-2     | The nuclide is not in the database of selected nuclides undergoing ß- decay, therefore its probability values are unknown.  |
+| -1.0/-1     | The nuclide's Qß1n or Qß2n value is extremely large and has not been measured. |
+| 0.001       | The nuclide's Qß1n or Qß2n value is less than 1000 MeV and has not been accurately measured.  |
 
-Note that stable nuclides necessarily do not undergo ß- decay, so their probability values will always be listed as -2.0/-2. 
 
-Sample Output:
+Sample Output (csv file):
 
 ```python
-88As,-1.0,88Se,99.01,88Br,93.28,88Kr,-2,88Rb,-2.0,88Sr,-2.0
-88As,-1.0,87Se,99.4,87Br,97.47,87Kr,-2,87Rb,-2.0,,
-88As,-1.0,86Se,-1.0,86Br,-2.0,86Kr,-2,,,,
-88As,-1.0,88Se,0.99,87Br,97.47,87Kr,-2,87Rb,-2.0,,
-88As,-1.0,87Se,0.6,86Br,-2.0,86Kr,-2,,,,
-88As,-1.0,86Se,-1.0,85Br,-2.0,85Kr,-2,85Rb,-2.0,,
-88As,-1.0,88Se,99.01,88Br,6.72,87Kr,-2,87Rb,-2.0,,
-88As,-1.0,87Se,99.4,87Br,2.53,86Kr,-2,,,,
-88As,-1.0,88Se,0.99,87Br,2.53,86Kr,-2,,,,
-88As,-1.0,88Se,99.01,88Br,6.72,87Kr,-2,87Rb,-2.0,,
-88As,-1.0,87Se,99.4,87Br,2.53,86Kr,-2,,,,
+88As,-1.0,88Se,99.01,88Br,93.28,88Kr,100.0,88Rb,100.0
+88As,-1.0,87Se,99.4,87Br,97.47,87Kr,100.0,,
+88As,-1.0,86Se,-1.0,86Br,100.0,,,,
+88As,-1.0,88Se,0.99,87Br,97.47,87Kr,100.0,,
+88As,-1.0,87Se,0.6,86Br,100.0,,,,
+88As,-1.0,86Se,-1.0,85Br,100.0,85Kr,100.0,,
+88As,-1.0,88Se,99.01,88Br,6.71999979019165,87Kr,100.0,,
+88As,-1.0,87Se,99.4,87Br,2.5299999713897705,,,,
+88As,-1.0,88Se,0.9900000095367432,87Br,2.5299999713897705,,,,
+88As,-1.0,88Se,99.01,88Br,6.71999979019165,87Kr,100.0,,
+88As,-1.0,87Se,99.4,87Br,2.5299999713897705,,,,
 ```
+Sample Output (printed to console if print box checked):
 
+```python
+['88As', -1.0, '88Se', 99.01, '88Br', 93.28, '88Kr', 100, '88Rb', 100, '88Sr']
+['88As', -1.0, '87Se', 99.4, '87Br', 97.47, '87Kr', 100, '87Rb']
+['88As', -1.0, '86Se', -1.0, '86Br', 100, '86Kr']
+['88As', -1.0, '88Se', 0.99, '87Br', 97.47, '87Kr', 100, '87Rb']
+['88As', -1.0, '87Se', 0.6, '86Br', 100, '86Kr']
+['88As', -1.0, '86Se', -1.0, '85Br', 100, '85Kr', 100, '85Rb']
+['88As', -1.0, '88Se', 99.01, '88Br', 6.72, '87Kr', 100, '87Rb']
+['88As', -1.0, '87Se', 99.4, '87Br', 2.53, '86Kr']
+['88As', -1.0, '88Se', 0.99, '87Br', 2.53, '86Kr']
+['88As', -1.0, '88Se', 99.01, '88Br', 6.72, '87Kr', 100, '87Rb']
+['88As', -1.0, '87Se', 99.4, '87Br', 2.53, '86Kr']
+```
