@@ -3,7 +3,7 @@ This program was developed by Katelyn Watts, under supervision and guidance from
 
 ## The Gist
 
-This is a short program where users provide a nuclide that undergoes ß- decay and can emit neutrons in that process. The user receives a csv file containing all the possible decay chains, the half-life of each nuclide, and the probability of each step.
+This is a short program where users provide a nuclide that undergoes ß- decay and can emit neutrons in that process. The user receives a csv file containing all the possible decay chains, the half-lives of the nuclides in each step of the chain, and the probability of each step.
 
 ## Installation
 
@@ -20,10 +20,13 @@ There are two options for installation of this program.
   * Click Download ZIP 
   * Unzip the file and move the directory into a directory of your choice
 
+## Startup
+
+From the console, navigate to the directory called `beta-decay-chains`. If you downloaded the zip file rather than cloning the repository, the directory will be called `beta-decay-chains-main`. 
+
+**Once there, enter the command `python src/chain_generator/interface.py`.** This will launch the program.
 
 ## Input
-
-From the console, navigate to the directory called `beta-decay-chains`. If you downloaded the zip file rather than cloning the repository, the directory will be called `beta-decay-chains-main`. Once there, enter the command `python src/chain_generator/interface.py`. This will launch the program.
 
 The program launches with a tkinter interface. The user is prompted to enter a nuclide that undergoes ß- decay as well as a path for the csv. The csv is written to a file called `Decay_Chain_[nuclide].csv` in the user-specified directory. If no directory is specified, the default is the current directory. 
 
