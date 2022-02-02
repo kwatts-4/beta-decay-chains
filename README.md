@@ -24,7 +24,7 @@ There are two options for installation of this program.
 
 From the console, navigate to the directory called `beta-decay-chains`. If you downloaded the zip file rather than cloning the repository, the directory will be called `beta-decay-chains-main`. 
 
-**Once there, enter the command `python src/chain_generator/interface.py`.** This will launch the program.
+**Once there, enter the command `python chain_generator/interface.py`.** This will launch the program.
 
 ## Input
 
