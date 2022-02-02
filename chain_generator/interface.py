@@ -11,7 +11,6 @@ root.geometry('300x450')
 
 g0 = tk.Label(root,text = 'Welcome to the Beta Decay Chain Generator')
 
-#the button is perfect now!
 info = tk.Button(root,
     text='User Information',
     width=10,
