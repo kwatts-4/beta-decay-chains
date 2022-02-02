@@ -7,14 +7,14 @@ This is a short program where users provide a nuclide that undergoes ß- decay a
 
 ## Installation
 
-Before installing, make sure you have Python 3.6 or later installed. For information on how to install python, go to https://www.python.org/downloads/.
+Before installing, make sure you have Python 3.6 or later installed. For information and installation, see https://www.python.org/downloads/.
 
 There are two options for installation of this program. 
 
-* Cloning this Repository
+* Cloning this Repository **(RECOMMENDED)**
   * From the console, navigate to the directory where you want the program
   * Enter `git clone https://github.com/kwatts-4/beta-decay-chains`
-* Downloading the Program Directly
+* Downloading the Program
   * Go to https://github.com/kwatts-4/beta-decay-chains
   * Click code (the green button)
   * Click Download ZIP 
