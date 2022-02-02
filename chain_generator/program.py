@@ -7,9 +7,9 @@ from copy import copy
 import re
 
 #getting files
-file = '../../input_files/ListNuclei.csv'
-el_z = '../../input_files/El_Z.csv' #atomic numbers [0] and elemental symbols [1]
-half = '../../input_files/HalfLives.csv' #nuclides [0] and half-lives (s) [1]
+file = '../input_files/ListNuclei.csv'
+el_z = '../input_files/El_Z.csv' #atomic numbers [0] and elemental symbols [1]
+half = '../input_files/HalfLives.csv' #nuclides [0] and half-lives (s) [1]
 nuc = pd.read_csv(file,delimiter=',',comment=None,header=0) #the comment=None ignores the pound symbols in cells
 elz = pd.read_csv(el_z,delimiter=',',header=0)
 t12 = pd.read_csv(half,delimiter=',',header=0)
@@ -18,7 +18,7 @@ nuc['P1n'],nuc['P2n'] = pd.to_numeric(nuc['P1n'], downcast="float"),pd.to_numeri
 
 #for any chain where no neutron emission happens (or none happens past a certain point)
 def basic(nuclide,p_list):
-    STABLE = np.load('../../input_files/Stable_dict.npy',allow_pickle=True)
+    STABLE = np.load('../input_files/Stable_dict.npy',allow_pickle=True)
     STABLE = STABLE.tolist()
     
     #startup + the first one (not in the while loop in case we start with a stable guy)
