@@ -52,6 +52,9 @@ There are some probability values that are to be treated as flags, and have spec
 | -1.0/-1     | The nuclide's Qß1n or Qß2n value is extremely large and has not been measured. |
 | 0.001       | The nuclide's Qß1n or Qß2n value is less than 1000 MeV and has not been accurately measured.  |
 
+#### Sample Outputs
+
+More sample csv files may be found in the `sample_csv` directory.
 
 Sample Output (csv file):
 
