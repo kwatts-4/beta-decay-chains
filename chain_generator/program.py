@@ -151,7 +151,7 @@ def P1nP2n(idx,p_lists):
 
 
 #the part of the program that actually runs
-def main(nuclide,filepath,Print=False):
+def main(nuclide,filepath='./',Print=False):
     
     #startup
     if nuclide in nuc['Nuclide'].unique():
