@@ -32,6 +32,8 @@ The program launches with a tkinter interface. The user is prompted to enter a n
 
 There is also a checkbox which when selected will print the decay chains to the console as of Python lists.
 
+To run the program multiple times, enter another nuclide, change the filepath if you'd like, and hit Generate Chains. To close the program, close the tkinter window.
+
 Sample Inputs:
 ```python
 88As
