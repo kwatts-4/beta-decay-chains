@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/beta_decay_chain_generator_kwatts324.egg-info/PKG-INFO
+src/beta_decay_chain_generator_kwatts324.egg-info/SOURCES.txt
+src/beta_decay_chain_generator_kwatts324.egg-info/dependency_links.txt
+src/beta_decay_chain_generator_kwatts324.egg-info/top_level.txt
