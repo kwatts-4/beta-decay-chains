@@ -52,19 +52,22 @@ generate = tk.Button(root,
     fg='green')
 
 def run():
-    nuclide = str(e0.get())
-    if e1.get():
-        filepath = str(e1.get())
+    if e0.get():
+        nuclide = str(e0.get())
+        if e1.get():
+            filepath = str(e1.get())
+        else:
+            filepath = './'
+        check = v0.get()
+        if check == 1:
+            pro.main(nuclide,filepath,Print=True)
+        else: 
+            pro.main(nuclide,filepath)
+        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+        g5.pack()
     else:
-        filepath = './'
-    check = v0.get()
-    if check == 1:
-        pro.main(nuclide,filepath,Print=True)
-    else: 
-        pro.main(nuclide,filepath)
-    g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
-    g5.pack()
-    
+        g5 = tk.Label(root,text = 'Unable to run program. Please enter a nuclide.')
+        g5.pack()
 
 generate.bind('<Button-1>', lambda e: run())
 
