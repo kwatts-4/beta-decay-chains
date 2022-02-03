@@ -53,7 +53,10 @@ generate = tk.Button(root,
 
 def run():
     nuclide = str(e0.get())
-    filepath = str(e1.get())
+    if e1.get():
+        filepath = str(e1.get())
+    else:
+        filepath = './'
     check = v0.get()
     if check == 1:
         pro.main(nuclide,filepath,Print=True)
