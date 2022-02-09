@@ -7,7 +7,7 @@ import webbrowser
 
 root = tk.Tk()
 root.title = 'ß- Decay Chain Generator'
-root.geometry('300x450')
+root.geometry('400x450')
 
 g0 = tk.Label(root,text = 'Welcome to the Beta Decay Chain Generator')
 
@@ -43,7 +43,9 @@ g4 = tk.Label(root,text = 'Please enter the full file path \n including the fina
 e1 = tk.Entry()
 
 v0 = tk.IntVar()
+v1 = tk.IntVar()
 c0 = tk.Checkbutton(root, text = 'Print to Console', variable = v0)
+c1 = tk.Checkbutton(root, text = 'Fill Null Values', variable = v1)
 
 generate = tk.Button(root,
     text='Generate Chains',
@@ -55,18 +57,27 @@ generate = tk.Button(root,
 def run():
     nuclide = str(e0.get())
     filepath = str(e1.get())
-    check = v0.get()
-    if check == 1:
+    check0 = v0.get()
+    check1 = v1.get()
+    if check0 == 1 and check1 == 1:
+        pro.main(nuclide,filepath,Print=True,noNULL=True)
+        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
+    elif check0 == 1:
         pro.main(nuclide,filepath,Print=True)
+        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+    elif check1 == 1:
+        pro.main(nuclide,filepath,noNULL=True)
+        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
     else: 
         pro.main(nuclide,filepath)
-    g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+    
     g5.pack()
     
 
 generate.bind('<Button-1>', lambda e: run())
 
-ww2 = [g3,g4,e1,c0,generate]
+ww2 = [g3,g4,e1,c0,c1,generate]
 for ww in ww2:
     ww.pack()
     

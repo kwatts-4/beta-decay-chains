@@ -151,7 +151,7 @@ def P1nP2n(idx,p_lists):
 
 
 #the part of the program that actually runs
-def main(nuclide,filepath,Print=False):
+def main(nuclide,filepath,Print=False,noNULL=False):
     
     #startup
     if nuclide in nuc['Nuclide'].unique():
@@ -185,9 +185,13 @@ def main(nuclide,filepath,Print=False):
                 frame_lists.append(row)
         frame = pd.DataFrame(frame_lists)
         frame.replace({np.nan: None})
-        filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'.csv'
-        frame.to_csv(filename,index=False,header=False,float_format='%.3f')
+        if noNULL == False:
+            filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'.csv'
+            frame.to_csv(filename,index=False,header=False,float_format='%.3f')
+        else:
+            
+            filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'_Filled.csv'
+            frame.to_csv(filename,na_rep="Empty",index=False,header=False,float_format='%.3f')
 
     else:
         print('The entered nuclide either does not undergo ß- decay \n or does not have sufficient Qß values to allow for neutron emissions.')
-        
