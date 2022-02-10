@@ -151,7 +151,8 @@ def P1nP2n(idx,p_lists):
 
 
 #the part of the program that actually runs
-def main(nuclide,filepath,Print=False,noNULL=False):
+def main(nuclide,filepath='./',Print=False,noNULL=False):
+
     
     #startup
     if nuclide in nuc['Nuclide'].unique():
@@ -189,9 +190,13 @@ def main(nuclide,filepath,Print=False,noNULL=False):
             filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'.csv'
             frame.to_csv(filename,index=False,header=False,float_format='%.3f')
         else:
-            
+            for idx,col in enumerate(frame):
+                if idx % 3 == 0: #for the Pxn values (floats)
+                    frame[col].fillna(-2.0,inplace=True)
+                else: #(both nuclides and half lives are strings)
+                    frame[col].fillna('-2.0',inplace=True)
             filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'_Filled.csv'
-            frame.to_csv(filename,na_rep="Empty",index=False,header=False,float_format='%.3f')
+            frame.to_csv(filename,index=False,header=False,float_format='%.3f')
 
     else:
         print('The entered nuclide either does not undergo ß- decay \n or does not have sufficient Qß values to allow for neutron emissions.')

@@ -7,14 +7,14 @@ This is a short program where users provide a nuclide that undergoes ß- decay a
 
 ## Installation
 
-Before installing, make sure you have Python 3.6 or later installed. For information on how to install python, go to https://www.python.org/downloads/.
+Before installing, make sure you have Python 3.6 or later installed. For information and installation, see https://www.python.org/downloads/.
 
 There are two options for installation of this program. 
 
-* Cloning this Repository
+* Cloning this Repository **(RECOMMENDED)**
   * From the console, navigate to the directory where you want the program
   * Enter `git clone https://github.com/kwatts-4/beta-decay-chains`
-* Downloading the Program Directly
+* Downloading the Program
   * Go to https://github.com/kwatts-4/beta-decay-chains
   * Click code (the green button)
   * Click Download ZIP 
@@ -30,7 +30,9 @@ From the console, navigate to the directory called `beta-decay-chains`. If you d
 
 The program launches with a tkinter interface. The user is prompted to enter a nuclide that undergoes ß- decay as well as a path for the csv. The csv is written to a file called `Decay_Chain_[nuclide].csv` in the user-specified directory. If no directory is specified, the default is the current directory. 
 
-There are also two checkboxes. When the first is selected, the program will print the decay chains to the console as rows of Python lists. When the second is selected, the program will fill in empty values in the csv with the string "Empty", to enable the csv files to be used in the ROOT framework. ROOT expects the csv to have rows of equal length.
+There are also two checkboxes. When the first is selected, the program will print the decay chains to the console as rows of Python lists. When the second is selected, the program will fill in empty values in the csv with the string or float "-2.0", to enable the csv files to be used in the ROOT framework. ROOT expects the csv to have rows of equal length. The reason for choosing -2.0 instead of a string like "Empty" is to make the resulting csv more malleable, allowing the values in each column to have a consistent type. Anything to make C/C++ happy...
+
+To run the program multiple times, enter another nuclide, change the filepath if you'd like, and hit Generate Chains. To close the program, close the tkinter window.
 
 Sample Inputs:
 ```python
@@ -73,14 +75,14 @@ Sample Output (csv file):
 Sample Output (csv file with filled null values)
 ```python
 888As,0.20,-1.000,88Se,1.51,99.010,88Br,16.29,93.280,88Kr,10170,100.000,88Rb,1066.38,100.000,88Sr,STABLE
-88As,0.20,-1.000,87Se,5.65,99.400,87Br,55.64,97.470,87Kr,4578,100.000,87Rb,1.56841E+18,Empty,Empty,Empty
-88As,0.20,-1.000,86Se,14.1,99.999,86Br,55.1,100.000,86Kr,STABLE,Empty,Empty,Empty,Empty,Empty,Empty
-88As,0.20,-1.000,88Se,1.51,0.990,87Br,55.64,97.470,87Kr,4578,100.000,87Rb,1.56841E+18,Empty,Empty,Empty
-88As,0.20,-1.000,87Se,5.65,0.600,86Br,55.1,100.000,86Kr,STABLE,Empty,Empty,Empty,Empty,Empty,Empty
-88As,0.20,-1.000,86Se,14.1,0.001,85Br,174,100.000,85Kr,338897066.4,100.000,85Rb,STABLE,Empty,Empty,Empty
-88As,0.20,-1.000,88Se,1.51,99.010,88Br,16.29,6.720,87Kr,4578,100.000,87Rb,1.56841E+18,Empty,Empty,Empty
-88As,0.20,-1.000,87Se,5.65,99.400,87Br,55.64,2.530,86Kr,STABLE,Empty,Empty,Empty,Empty,Empty,Empty
-88As,0.20,-1.000,88Se,1.51,0.990,87Br,55.64,2.530,86Kr,STABLE,Empty,Empty,Empty,Empty,Empty,Empty
+88As,0.20,-1.000,87Se,5.65,99.400,87Br,55.64,97.470,87Kr,4578,100.000,87Rb,1.56841E+18,-2.0,-2.0,-2.0
+88As,0.20,-1.000,86Se,14.1,99.999,86Br,55.1,100.000,86Kr,STABLE,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0
+88As,0.20,-1.000,88Se,1.51,0.990,87Br,55.64,97.470,87Kr,4578,100.000,87Rb,1.56841E+18,-2.0,-2.0,-2.0
+88As,0.20,-1.000,87Se,5.65,0.600,86Br,55.1,100.000,86Kr,STABLE,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0
+88As,0.20,-1.000,86Se,14.1,0.001,85Br,174,100.000,85Kr,338897066.4,100.000,85Rb,STABLE,-2.0,-2.0,-2.0
+88As,0.20,-1.000,88Se,1.51,99.010,88Br,16.29,6.720,87Kr,4578,100.000,87Rb,1.56841E+18,-2.0,-2.0,-2.0
+88As,0.20,-1.000,87Se,5.65,99.400,87Br,55.64,2.530,86Kr,STABLE,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0
+88As,0.20,-1.000,88Se,1.51,0.990,87Br,55.64,2.530,86Kr,STABLE,-2.0,-2.0,-2.0,-2.0,-2.0,-2.0
 ```
 Sample Output (printed to console if print box checked):
 

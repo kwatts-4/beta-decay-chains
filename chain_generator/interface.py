@@ -11,7 +11,6 @@ root.geometry('400x450')
 
 g0 = tk.Label(root,text = 'Welcome to the Beta Decay Chain Generator')
 
-#the button is perfect now!
 info = tk.Button(root,
     text='User Information',
     width=10,
@@ -55,25 +54,33 @@ generate = tk.Button(root,
     fg='green')
 
 def run():
-    nuclide = str(e0.get())
-    filepath = str(e1.get())
-    check0 = v0.get()
-    check1 = v1.get()
-    if check0 == 1 and check1 == 1:
-        pro.main(nuclide,filepath,Print=True,noNULL=True)
-        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
-    elif check0 == 1:
-        pro.main(nuclide,filepath,Print=True)
-        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
-    elif check1 == 1:
-        pro.main(nuclide,filepath,noNULL=True)
-        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
-    else: 
-        pro.main(nuclide,filepath)
-        g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
-    
+    if e0.get():
+        nuclide = str(e0.get())
+        if e1.get():
+            filepath = str(e1.get())
+        else:
+            filepath = './'
+        check0 = v0.get()
+        check1 = v1.get()
+        if check0 == 1 and check1 == 1:
+            pro.main(nuclide,filepath,Print=True,noNULL=True)
+            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
+        elif check0 == 1:
+            pro.main(nuclide,filepath,Print=True)
+            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+        elif check1 == 1:
+            pro.main(nuclide,filepath,noNULL=True)
+            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
+        else: 
+            pro.main(nuclide,filepath)
+            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+
+        
+    else:
+        g5 = tk.Label(root,text = 'Unable to run program. Please enter a nuclide.')
+        
     g5.pack()
-    
+
 
 generate.bind('<Button-1>', lambda e: run())
 
