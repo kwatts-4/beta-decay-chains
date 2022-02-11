@@ -197,6 +197,7 @@ def main(nuclide,filepath='./',Print=False,noNULL=False):
                     frame[col].fillna('-2.0',inplace=True)
             filename = str(filepath)+'Decay_Chains_'+str(nuclide)+'_Filled.csv'
             frame.to_csv(filename,index=False,header=False,float_format='%.3f')
-
+        return 0
     else:
         print('The entered nuclide either does not undergo ß- decay \n or does not have sufficient Qß values to allow for neutron emissions.')
+        return 1

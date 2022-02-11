@@ -63,17 +63,29 @@ def run():
         check0 = v0.get()
         check1 = v1.get()
         if check0 == 1 and check1 == 1:
-            pro.main(nuclide,filepath,Print=True,noNULL=True)
-            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
+            flag = pro.main(nuclide,filepath,Print=True,noNULL=True)
+            if flag == 1: 
+                g5 = tk.Label(root, text = 'Error: Invalid nuclide. See console for details.')
+            else:
+                g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
         elif check0 == 1:
-            pro.main(nuclide,filepath,Print=True)
-            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+            flag = pro.main(nuclide,filepath,Print=True)
+            if flag == 1: 
+                g5 = tk.Label(root, text = 'Error: Invalid nuclide. See console for details.')
+            else:
+                g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
         elif check1 == 1:
-            pro.main(nuclide,filepath,noNULL=True)
-            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
+            flag = pro.main(nuclide,filepath,noNULL=True)
+            if flag == 1: 
+                g5 = tk.Label(root, text = 'Error: Invalid nuclide. See console for details.')
+            else:
+                g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'_Filled.csv has been saved')
         else: 
-            pro.main(nuclide,filepath)
-            g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
+            flag = pro.main(nuclide,filepath)
+            if flag == 1: 
+                g5 = tk.Label(root, text = 'Error: Invalid nuclide. See console for details.')
+            else:
+                g5 = tk.Label(root,text = 'File Decay_Chains_'+str(nuclide)+'.csv has been saved')
 
         
     else:
